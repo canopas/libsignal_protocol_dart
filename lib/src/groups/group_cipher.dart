@@ -82,11 +82,7 @@ class GroupCipher {
             '${senderChainKey.iteration} , $iteration');
       }
     }
-
-    if (iteration - senderChainKey.iteration > 2000) {
-      throw InvalidMessageException('Over 2000 messages into the future!');
-    }
-
+    
     while (senderChainKey.iteration < iteration) {
       senderKeyState.addSenderMessageKey(senderChainKey.senderMessageKey);
       senderChainKey = senderChainKey.next;
